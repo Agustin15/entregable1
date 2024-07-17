@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/styles.css">
+    <title>Added task</title>
+</head>
+
+<body>
+
+    <header>
+
+        <h1>Added task</h1>
+    </header>
+
+    <main>
+
+        <div id="containListAndForm">
+
+
+            <div id="formAddTask">
+                <form action="#" method="">
+
+                    <div id="containHeaderAdd">
+
+
+                        <div>
+
+                            <span>Agregar</span>
+                        </div>
+
+                        <div>
+                            <img src="img/addTaskIcon.png">
+                        </div>
+
+                    </div>
+
+                    <div id="containTaskName">
+
+                        <div id="lblTaskName">
+                            <label for="taskName">Nombre de la tarea</label>
+                        </div>
+                        <div>
+                            <input required type="text" id="taskName" placeholder="Ingresa nombre de la tarea">
+                        </div>
+
+                    </div>
+
+
+                    <div id="containTaskDateTime">
+
+                        <div id="containTaskDate">
+
+                            <div id="lblTaskDate">
+                                <label for="taskDate">Fecha limite</label>
+                            </div>
+                            <div>
+                                <input required type="date" id="taskDate">
+                            </div>
+
+                        </div>
+
+                        <div id="containTaskTime">
+
+                            <div id="lblTaskTime">
+                                <label for="taskTime">Hora</label>
+                            </div>
+
+                            <div>
+                                <input required type="time" id="taskTime">
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div id="containTaskDescription">
+
+                        <div id="lblTaskDescription">
+                            <label for="taskDescription">Descripcion</label>
+                        </div>
+                        <div>
+                            <textarea required id="taskDescription"></textarea>
+                        </div>
+
+                    </div>
+
+                    <div id="containButtons">
+
+
+                        <button type="submit" id="buttonAdd">Agregar tarea</button>
+                        <button type="reset" id="buttonReset">Limpiar</button>
+
+                    </div>
+
+
+                </form>
+            </div>
+
+
+            <div id="containList">
+
+                <div id="containHeaderList">
+
+                    <div>
+
+                        <span>Lista</span>
+                    </div>
+                    <div>
+                        <img src="img/listTask.png">
+                    </div>
+
+
+
+                </div>
+
+                <ul>
+                    <li>Tarea 1</li>
+                    <li>Tarea 2</li>
+                    <li>Tarea 3</li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </main>
+</body>
+
+</html>

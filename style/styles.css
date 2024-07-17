@@ -1,0 +1,167 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: white;
+}
+
+header {
+  background: linear-gradient(skyblue, rgb(24, 122, 202));
+  padding-top: 20px;
+  height: 50px;
+}
+header h1 {
+  text-align: center;
+  color: white;
+}
+
+main #containListAndForm {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-top: 3%;
+  gap: 130px;
+  
+}
+
+main #formAddTask {
+  margin-left: 10%;
+  width: 430px;
+}
+
+main #formAddTask #containHeaderAdd img,
+main #containList #containHeaderList img {
+  width: 40px;
+}
+
+main #formAddTask form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid rgb(130, 195, 238);
+  box-shadow: 0 5px 12px rgba(222, 110, 236, 0.8);
+  border-radius: 5px;
+  width: 100%;
+  height: 100%;
+  padding-bottom: 40px;
+  padding-top: 10px;
+  background-color: white;
+}
+
+main #containTaskName,
+main #containTaskDateTime,
+main #containTaskDescription {
+  margin-top: 35px;
+}
+
+main #formAddTask form input,
+main #formAddTask form textarea {
+  width: 350px;
+  height: 40px;
+  border-radius: 4px;
+  border: 1px solid rgb(155, 155, 155);
+  outline: none;
+  margin-top: 10px;
+  font-size: 15px;
+}
+
+#formAddTask form input:hover {
+  border: 1px solid skyblue;
+  box-shadow: 1px 1px 1px rgb(143, 242, 255);
+}
+
+#formAddTask form textarea {
+  height: 70px;
+  width: 370px;
+}
+
+#formAddTask #containTaskName input {
+  padding-left: 20px;
+}
+
+#formAddTask label {
+  font-weight: bold;
+  color: rgb(37, 37, 37);
+  font-size: 14px;
+}
+
+#formAddTask #containTaskDateTime {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  gap: 30px;
+}
+
+#formAddTask #containTaskDateTime input {
+  width: 170px;
+}
+
+#formAddTask #containButtons {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+#formAddTask #containButtons button {
+  width: 130px;
+  height: 32px;
+  border-radius: 4px;
+  border: none;
+  background: linear-gradient(skyblue, rgb(24, 122, 202));
+  box-shadow: 2px 2px 2px rgb(175, 175, 175);
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+#formAddTask #containButtons button:hover {
+  background: linear-gradient(rgb(47, 127, 158), rgb(81, 161, 226));
+}
+
+#containList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 350px;
+  height: 490px;
+  overflow-y: scroll;
+  border: 2px solid rgb(130, 195, 238);
+  box-shadow: 0 5px 12px rgba(222, 110, 236, 0.8);
+  border-radius: 5px;
+  padding-top: 15px;
+  background-color: white;
+}
+
+#containList ul {
+  list-style: none;
+  width: 100%;
+  height: 100%;
+  margin-top: 10%;
+}
+
+#containList ul li {
+  border-bottom: 0.5px solid gray;
+  padding-top: 13px;
+  padding-left: 20px;
+  height: 30px;
+}
+
+#containHeaderList,
+#containHeaderAdd {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#containHeaderList span,
+#containHeaderAdd span {
+  font-size: 22px;
+  color: rgb(87, 188, 228);
+  font-weight: bold;
+}
