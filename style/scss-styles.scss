@@ -160,17 +160,30 @@ main {
       @include margin(0,0,0,0.5rem);
     }
   }
-  #checkBoxTaskState {
-    @include flex(row, end, center);
+
+  .headerLi{
+
+    @include flex(row,space-between,center);
+    gap: 1rem;
+  }
+
+  .headerLi img{
+
+    width: 20px;
+    padding-right: 1rem
+  }
+
+  .checkBoxTaskState {
+    @include flex(row, start, center);
     gap: 10px;
-    @include margin(0,1rem,0,0);
+    @include margin(0,4rem,0,0);
   }
 
-  #taskNameLi {
-    @include margin(-0.8rem,0,0,0);
+  .taskNameLi {
+    @include margin(-0.2rem,0,0,0);
   }
 
-  #taskDateTimeLi {
+  .taskDateTimeLi {
     @include flex(row, start, center);
     gap: 20px;
   }

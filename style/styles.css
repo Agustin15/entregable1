@@ -164,18 +164,29 @@ main #containList ul li {
   gap: 15px;
   margin: 0 0 0 0.5rem;
 }
-main #checkBoxTaskState {
+main .headerLi {
   display: flex;
   flex-direction: row;
-  justify-content: end;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+main .headerLi img {
+  width: 20px;
+  padding-right: 1rem;
+}
+main .checkBoxTaskState {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
   align-items: center;
   gap: 10px;
-  margin: 0 1rem 0 0;
+  margin: 0 4rem 0 0;
 }
-main #taskNameLi {
-  margin: -0.8rem 0 0 0;
+main .taskNameLi {
+  margin: -0.2rem 0 0 0;
 }
-main #taskDateTimeLi {
+main .taskDateTimeLi {
   display: flex;
   flex-direction: row;
   justify-content: start;
