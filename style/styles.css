@@ -153,9 +153,8 @@ main #containList ul {
 main #containList ul li {
   border: 1px solid skyblue;
   box-shadow: 4px 4px 4px rgb(215, 135, 235);
-  padding: 0 0 0 1rem;
   border-radius: 5px;
-  height: 130px;
+  height: 150px;
   width: 280px;
   display: flex;
   flex-direction: column;
@@ -163,6 +162,7 @@ main #containList ul li {
   align-items: stretch;
   gap: 15px;
   margin: 0 0 0 0.5rem;
+  padding-bottom: 1rem;
 }
 main .headerLi {
   display: flex;
@@ -182,9 +182,13 @@ main .checkBoxTaskState {
   align-items: center;
   gap: 10px;
   margin: 0 4rem 0 0;
+  padding-left: 1rem;
 }
 main .taskNameLi {
   margin: -0.2rem 0 0 0;
+  background-color: skyblue;
+  color: white;
+  padding: 0.5rem 0.5rem 0.5rem 1rem;
 }
 main .taskDateTimeLi {
   display: flex;
@@ -192,6 +196,10 @@ main .taskDateTimeLi {
   justify-content: start;
   align-items: center;
   gap: 20px;
+  padding-left: 1rem;
+}
+main .taskDescriptionLi {
+  padding-left: 1rem;
 }
 
 /*# sourceMappingURL=styles.css.map */

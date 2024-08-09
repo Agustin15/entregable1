@@ -1,31 +1,46 @@
 const buttonAdd = document.getElementById("buttonAdd");
+const taskName = document.getElementById("taskName");
+const taskDate = document.getElementById("taskDate");
+const taskTime = document.getElementById("taskTime");
+const taskDescription = document.getElementById("taskDescription");
+let buttonReset = document.getElementById("buttonReset");
 
-if (buttonAdd) {
-  buttonAdd.addEventListener("click", function (event) {
-    event.preventDefault();
+let list = document.querySelector("ul");
+let listTasks = [];
 
-    const taskName = document.getElementById("taskName");
-    const taskDate = document.getElementById("taskDate");
-    const taskTime = document.getElementById("taskTime");
-    const taskDescription = document.getElementById("taskDescription");
+const createTask = (
+  taskNameValue,
+  taskDateValue,
+  taskTimeValue,
+  taskDescriptionValue
+) => {
+  const task = {
+    name: taskNameValue,
+    date: taskDateValue,
+    time: taskTimeValue,
+    description: taskDescriptionValue,
+  };
 
-    if (
-      taskName.value.trim() == "" ||
-      taskDate.value.trim() == "" ||
-      taskTime.value.trim() == "" ||
-      taskDescription.value.trim() == ""
-    ) {
-    } else {
-      addToList(taskName, taskDate, taskTime, taskDescription);
-      clean();
-    }
-  });
-}
+  return task;
+};
 
-const addToList = (taskName, taskDate, taskTime, taskDescription) => {
-  let list = document.querySelector("ul");
+const addToList = (task) => {
+  listTasks.push(task);
+};
 
-  list.innerHTML += `
+const removeToList = (taskDescriptionDelete) => {
+  console.log(taskDescriptionDelete);
+  listTasks = listTasks.filter(
+    (task) => task.description !== taskDescriptionDelete
+  );
+
+  printList();
+};
+
+const printList = () => {
+  cleanTaskList();
+  listTasks.forEach((task) => {
+    list.innerHTML += `
    
      <li>
 
@@ -45,7 +60,7 @@ const addToList = (taskName, taskDate, taskTime, taskDescription) => {
 
                     <div class="deleteTask">
 
-                    <img class="delete" title="Eliminar" src="../img/trash.png">
+                    <img class="delete" id="${task.description}" title="Eliminar" src="../img/trash.png">
                     </div>
 
                     </div>
@@ -53,25 +68,25 @@ const addToList = (taskName, taskDate, taskTime, taskDescription) => {
 
                     <div class="taskNameLi">
 
-                        <span>${taskName.value}</span>
+                        <span>${task.name}</span>
                     </div>
 
 
                     <div class="taskDateTimeLi">
                         <div class="taskDateLi">
 
-                            <span>Fecha:${taskDate.value}</span>
+                            <span>Fecha:${task.date}</span>
                         </div>
 
                         <div class="taskTimeLi">
 
-                            <span>Hora:${taskTime.value}</span>
+                            <span>Hora:${task.time}</span>
                         </div>
 
                     </div>
                     <div class="taskDescriptionLi">
 
-                        <span>Descripcion:${taskDescription.value}</span>
+                        <span>Descripcion:${task.description}</span>
                     </div>
 
 
@@ -79,33 +94,55 @@ const addToList = (taskName, taskDate, taskTime, taskDescription) => {
                 </li>
 
    `;
-
-  let buttonDeletes = document.querySelectorAll(".delete");
-
-  [...buttonDeletes].forEach((btnDelete) => {
-    btnDelete.addEventListener("click", function () {
-      removeToList(btnDelete);
-    });
   });
+
+  let buttonDeletes = [...document.querySelectorAll(".delete")];
+
+  if (buttonDeletes.length > 0) {
+    [...buttonDeletes].forEach((buttonDelete) => {
+      buttonDelete.addEventListener("click", () => {
+        let taskDescriptionDelete = buttonDelete.id;
+        removeToList(taskDescriptionDelete);
+      });
+    });
+  }
 };
 
-const removeToList = (btnDelete) => {
-  let list = document.querySelector("ul");
-  let fatherDiv = btnDelete.parentNode;
-  list.removeChild(fatherDiv.parentNode.parentNode);
-};
-
-const clean = () => {
+const cleanForm = () => {
   document.querySelector("textarea").value = "";
   [...document.querySelectorAll("input")].forEach((input) => {
     input.value = "";
   });
 };
 
-let buttonReset = document.getElementById("buttonReset");
+const cleanTaskList = () => {
+  list.innerHTML = "";
+};
+
+if (buttonAdd) {
+  buttonAdd.addEventListener("click", (event) => {
+    event.preventDefault();
+
+    if (
+      taskName.value.trim() == "" ||
+      taskDate.value.trim() == "" ||
+      taskTime.value.trim() == "" ||
+      taskDescription.value.trim() == ""
+    ) {
+      alert("Complete todos los campos");
+    } else {
+      let task = createTask(
+        taskName.value,
+        taskDate.value,
+        taskTime.value,
+        taskDescription.value
+      );
+      addToList(task);
+      printList();
+    }
+  });
+}
 
 if (buttonReset) {
-  buttonReset.addEventListener("click", function () {
-    clean();
-  });
+  buttonReset.addEventListener("click", cleanForm());
 }
