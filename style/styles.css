@@ -23,7 +23,7 @@ main {
   flex-direction: row;
   justify-content: start;
   align-items: start;
-  margin: 3rem 0 0 0;
+  margin: 2rem 0 0 0;
   gap: 3rem;
 }
 main #containHeaderList,
@@ -99,6 +99,9 @@ main #formAddTask #containTaskDateTime {
 main #formAddTask #containTaskDateTime input {
   width: 170px;
 }
+main #formAddTask #containImage input {
+  width: 368px;
+}
 main #formAddTask #containButtons {
   display: flex;
   flex-direction: row;
@@ -123,8 +126,9 @@ main #formAddTask #containButtons button:hover {
 }
 main #containTaskName,
 main #containTaskDateTime,
-main #containTaskDescription {
-  margin: 2.2rem 0 0 0;
+main #containTaskDescription,
+main #containImage {
+  margin: 1.6rem 0 0 0;
 }
 main #containList {
   display: flex;
@@ -132,7 +136,7 @@ main #containList {
   justify-content: center;
   align-items: center;
   width: 800px;
-  height: 497px;
+  height: 568px;
   overflow-y: scroll;
   border: 2px solid rgb(130, 195, 238);
   box-shadow: 0 5px 12px rgba(222, 110, 236, 0.8);
@@ -143,54 +147,61 @@ main #containList ul {
   list-style: none;
   width: 100%;
   height: 100%;
-  margin: 2rem 0 0 0;
+  margin: 1rem 0 0 0;
   flex-wrap: wrap;
   display: flex;
   flex-direction: row;
   justify-content: start;
-  align-items: stretch;
+  align-items: start;
+  padding-left: 1rem;
+  gap: 2rem;
 }
 main #containList ul li {
   border: 1px solid skyblue;
   box-shadow: 4px 4px 4px rgb(215, 135, 235);
   border-radius: 5px;
-  height: 150px;
-  width: 280px;
+  min-height: 230px;
+  width: 340px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: stretch;
-  gap: 15px;
-  margin: 0 0 0 0.5rem;
-  padding-bottom: 1rem;
+  justify-content: start;
+  align-items: start;
+  gap: 1.6rem;
 }
-main .headerLi {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  gap: 1rem;
+main #containList ul li a {
+  font-weight: bold;
 }
-main .headerLi img {
-  width: 20px;
-  padding-right: 1rem;
-}
-main .checkBoxTaskState {
+main #containList .headerLi {
   display: flex;
   flex-direction: row;
   justify-content: start;
+  align-items: start;
+  width: 100%;
+  height: 50px;
+  box-shadow: 2px 2px 2px grey;
+}
+main #containList .headerLi img {
+  width: 20px;
+  height: 100%;
+}
+main #containList .imageTask {
+  height: 100%;
+}
+main #containList .imageTask img {
+  width: 80px;
+}
+main #containList .taskNameLi {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
   align-items: center;
-  gap: 10px;
-  margin: 0 4rem 0 0;
-  padding-left: 1rem;
-}
-main .taskNameLi {
-  margin: -0.2rem 0 0 0;
-  background-color: skyblue;
+  background-color: rgb(98, 179, 211);
   color: white;
-  padding: 0.5rem 0.5rem 0.5rem 1rem;
+  width: 100%;
+  height: 100%;
+  font-weight: bold;
 }
-main .taskDateTimeLi {
+main #containList .taskDateTimeLi {
   display: flex;
   flex-direction: row;
   justify-content: start;
@@ -198,8 +209,33 @@ main .taskDateTimeLi {
   gap: 20px;
   padding-left: 1rem;
 }
-main .taskDescriptionLi {
+main #containList .taskDescriptionLi {
   padding-left: 1rem;
+}
+main #containList .taskDescriptionLi .description {
+  overflow-y: scroll;
+  height: 50px;
+  padding-top: 0.2rem;
+}
+main #containList .taskDescriptionLi p {
+  width: 100%;
+}
+main #containList .containDelete {
+  margin-left: 15rem;
+  padding-bottom: 0.5rem;
+}
+main #containList .containDelete button {
+  width: 90px;
+  height: 25px;
+  box-shadow: 2px 2px 2px rgb(56, 56, 56);
+  border-radius: 3px;
+  color: white;
+  border: none;
+  background-color: rgb(55, 133, 223);
+  font-weight: bold;
+}
+main #containList .containDelete button:hover {
+  background-color: rgb(71, 134, 185);
 }
 
 /*# sourceMappingURL=styles.css.map */

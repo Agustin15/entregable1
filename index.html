@@ -21,7 +21,7 @@
 
 
         <section id="formAddTask">
-            <form>
+            <form onsubmit="createTask(event)">
 
                 <div id="containHeaderAdd">
 
@@ -43,7 +43,7 @@
                         <label for="taskName">Nombre de la tarea</label>
                     </div>
                     <div>
-                        <input required type="text" id="taskName" placeholder="Ingresa nombre de la tarea">
+                        <input required type="text" id="taskName" name="name" placeholder="Ingresa nombre de la tarea">
                     </div>
 
                 </div>
@@ -54,10 +54,10 @@
                     <div id="containTaskDate">
 
                         <div id="lblTaskDate">
-                            <label for="taskDate">Fecha limite</label>
+                            <label for="taskDate">Fecha</label>
                         </div>
                         <div>
-                            <input required type="date" id="taskDate">
+                            <input name="date" required type="date" id="taskDate">
                         </div>
 
                     </div>
@@ -69,7 +69,7 @@
                         </div>
 
                         <div>
-                            <input required type="time" id="taskTime">
+                            <input name="hour" required type="time" id="taskTime">
                         </div>
 
                     </div>
@@ -82,8 +82,21 @@
                         <label for="taskDescription">Descripcion</label>
                     </div>
                     <div>
-                        <textarea required id="taskDescription"></textarea>
+                        <textarea name="description" required id="taskDescription"></textarea>
                     </div>
+
+                </div>
+
+                <div id="containImage">
+
+                    <div>
+                       
+                        <label for="imgUrl">Imagen</label>
+                    </div>
+                    <div>
+                        <input id="imgUrl" name="imageUrl" type="url">
+                    </div>
+
 
                 </div>
 
@@ -91,7 +104,7 @@
 
 
                     <button type="submit" id="buttonAdd">Agregar tarea</button>
-                    <button type="reset" id="buttonReset">Limpiar</button>
+                    <button type="reset" onclick="cleanTasksList()" id="buttonReset">Limpiar lista</button>
 
                 </div>
 
@@ -117,7 +130,7 @@
             </div>
 
             <ul>
-              
+
             </ul>
 
         </section>
@@ -128,3 +141,6 @@
 </body>
 
 </html>
+
+
+   

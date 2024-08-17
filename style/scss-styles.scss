@@ -8,12 +8,12 @@
 
 body {
   font-family: Arial, Helvetica, sans-serif;
-  background-color:$backgroundColor;
+  background-color: $backgroundColor;
 }
 
 header {
   background: $backgroundLinearGradient;
-  @include padding(1.2rem,0,0,0);
+  @include padding(1.2rem, 0, 0, 0);
   height: 3rem;
 
   h1 {
@@ -24,7 +24,7 @@ header {
 
 main {
   @include flex(row, start, start);
-  @include margin(3rem,0,0,0);
+  @include margin(2rem, 0, 0, 0);
   gap: 3rem;
 
   #containHeaderList,
@@ -47,7 +47,7 @@ main {
   }
 
   #formAddTask {
-    @include margin(0,0,0,1.5rem);
+    @include margin(0, 0, 0, 1.5rem);
     width: 470px;
 
     form {
@@ -57,8 +57,8 @@ main {
       border-radius: $borderRadius;
       width: 100%;
       height: 100%;
-      @include padding(0,0,2rem,0);
-      background-color:$backgroundColor;
+      @include padding(0, 0, 2rem, 0);
+      background-color: $backgroundColor;
     }
 
     form input,
@@ -68,7 +68,7 @@ main {
       border-radius: $borderRadius;
       border: 1px solid rgb(155, 155, 155);
       outline: none;
-      @include margin(0.8rem,0,0,0);
+      @include margin(0.8rem, 0, 0, 0);
       font-size: 15px;
     }
 
@@ -82,7 +82,7 @@ main {
     }
 
     #containTaskName input {
-      @include padding(0,0,0,1rem);
+      @include padding(0, 0, 0, 1rem);
     }
 
     label {
@@ -100,10 +100,14 @@ main {
       width: 170px;
     }
 
+    #containImage input {
+      width: 368px;
+    }
+
     #containButtons {
       @include flex(row, center, center);
       gap: 30px;
-      @include margin(2rem,0,0,0);
+      @include margin(2rem, 0, 0, 0);
     }
 
     #containButtons button {
@@ -125,14 +129,15 @@ main {
 
   #containTaskName,
   #containTaskDateTime,
-  #containTaskDescription {
-    @include margin(2.2rem,0,0,0);
+  #containTaskDescription,
+  #containImage {
+    @include margin(1.6rem, 0, 0, 0);
   }
 
   #containList {
     @include flex(column, center, center);
     width: 800px;
-    height: 497px;
+    height: 568px;
     overflow-y: scroll;
     border: 2px solid rgb(130, 195, 238);
     @include boxShadow(0 5px 12px rgba(222, 110, 236, 0.8));
@@ -143,61 +148,93 @@ main {
       list-style: none;
       width: 100%;
       height: 100%;
-      @include margin(2rem,0,0,0);
+      @include margin(1rem, 0, 0, 0);
       flex-wrap: wrap;
-      @include flex(row, start, stretch);
+      @include flex(row, start, start);
+      padding-left: 1rem;
+      gap: 2rem;
     }
 
     ul li {
       border: 1px solid skyblue;
       @include boxShadow(4px 4px 4px rgb(215, 135, 235));
       border-radius: $borderRadius;
-      height: 150px;
-      width: 280px;
-      @include flex(column, center, stretch);
-      gap: 15px;
-      @include margin(0,0,0,0.5rem);
-      padding-bottom: 1rem;
+      min-height: 230px;
+      width: 340px;
+      @include flex(column, start, start);
+      gap: 1.6rem;
     }
-  }
 
-  .headerLi{
+    ul li a {
+      font-weight: bold;
+    }
 
-    @include flex(row,space-between,center);
-    gap: 1rem;
-  }
+    .headerLi {
+      @include flex(row, start, start);
+      width: 100%;
+      height: 50px;
+      box-shadow: 2px 2px 2px grey;
 
-  .headerLi img{
+      img {
+        width: 20px;
+        height: 100%;
+      }
+    }
 
-    width: 20px;
-    padding-right: 1rem
-  }
+    .imageTask {
+      height: 100%;
 
-  .checkBoxTaskState {
-    @include flex(row, start, center);
-    gap: 10px;
-    @include margin(0,4rem,0,0);
-    padding-left: 1rem;
-  }
+      img {
+        width: 80px;
+      }
+    }
 
-  
-  .taskNameLi {
-    @include margin(-0.2rem,0,0,0);
-    background-color: skyblue;
-    color:white;
-    @include padding(0.5rem,0.5rem,0.5rem,1rem);
-    
-  
-  }
+    .taskNameLi {
+      @include flex(row, center, center);
+      background-color: rgb(98, 179, 211);
+      color: white;
+      width: 100%;
+      height: 100%;
+      font-weight: bold;
+    }
 
-  .taskDateTimeLi {
-    @include flex(row, start, center);
-    gap: 20px;
-    padding-left: 1rem;
-  }
+    .taskDateTimeLi {
+      @include flex(row, start, center);
+      gap: 20px;
+      padding-left: 1rem;
+    }
 
-  .taskDescriptionLi{
+    .taskDescriptionLi {
+      padding-left: 1rem;
 
-   padding-left: 1rem;
+      .description {
+        overflow-y: scroll;
+        height: 50px;
+        padding-top: 0.2rem;
+      }
+      p {
+        width: 100%;
+      }
+    }
+
+    .containDelete {
+      margin-left: 15rem;
+      padding-bottom: 0.5rem;
+
+      button {
+        width: 90px;
+        height: 25px;
+        box-shadow: 2px 2px 2px rgb(56, 56, 56);
+        border-radius: 3px;
+        color: white;
+        border: none;
+        background-color: rgb(55, 133, 223);
+        font-weight: bold;
+      }
+
+      button:hover {
+        background-color: rgb(71, 134, 185);
+      }
+    }
   }
 }

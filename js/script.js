@@ -1,148 +1,115 @@
-const buttonAdd = document.getElementById("buttonAdd");
-const taskName = document.getElementById("taskName");
-const taskDate = document.getElementById("taskDate");
-const taskTime = document.getElementById("taskTime");
-const taskDescription = document.getElementById("taskDescription");
-let buttonReset = document.getElementById("buttonReset");
-
 let list = document.querySelector("ul");
 let listTasks = [];
-
-const createTask = (
-  taskNameValue,
-  taskDateValue,
-  taskTimeValue,
-  taskDescriptionValue
-) => {
-  const task = {
-    name: taskNameValue,
-    date: taskDateValue,
-    time: taskTimeValue,
-    description: taskDescriptionValue,
-  };
-
-  return task;
-};
 
 const addToList = (task) => {
   listTasks.push(task);
 };
 
-const removeToList = (taskDescriptionDelete) => {
-  console.log(taskDescriptionDelete);
-  listTasks = listTasks.filter(
-    (task) => task.description !== taskDescriptionDelete
-  );
+const removeToList = (idTask) => {
+  const confirmDelete = confirm("¿Esta seguro de querer eliminar esta tarea?");
+
+  if (!confirmDelete) return;
+
+  listTasks = listTasks.filter((task) => task.id !== idTask);
 
   printList();
 };
 
 const printList = () => {
-  cleanTaskList();
-  listTasks.forEach((task) => {
-    list.innerHTML += `
+  let tasksToPrint = listTasks.map((task) => {
+    return `
+   <li>
+
+        <div class="headerLi">
    
-     <li>
+                     
+                       <div class="imageTask">
+   
+                         <img src="${task.imageUrl}">
+   
+                       </div>
+   
+   
+                       <div class="taskNameLi">
+   
+                           <span>${task.name}</span>
+                       </div>
+   
+                       </div>
+   
+                       <div class="taskDateTimeLi">
+                           <div class="taskDateLi">
+   
+                               <span><a>Fecha:</a>${task.date}</span>
+                           </div>
+   
+                           <div class="taskTimeLi">
+   
+                               <span><a>Hora:</a>${task.hour}</span>
+                           </div>
+   
+                       </div>
+                       <div class="taskDescriptionLi">
+                           
+                           <span><a>Descripcion:</a></span>
+                           <div class="description">
+                           <p>${task.description}</p>
 
-     <div class="headerLi">
-                    <div class="checkBoxTaskState">
+                           </div>
+                       </div>
+   
+   
+                       <div class="containDelete">
 
-                        <div>
-                            <input type="checkbox" id="checkboxTask">
-                        </div>
-                        <div class="lblCheckBoxTask">
-
-                            <label for="checkboxTask">Realizada</label>
-
-                        </div>
-
-                    </div>
-
-                    <div class="deleteTask">
-
-                    <img class="delete" id="${task.description}" title="Eliminar" src="../img/trash.png">
-                    </div>
-
-                    </div>
-
-
-                    <div class="taskNameLi">
-
-                        <span>${task.name}</span>
-                    </div>
-
-
-                    <div class="taskDateTimeLi">
-                        <div class="taskDateLi">
-
-                            <span>Fecha:${task.date}</span>
-                        </div>
-
-                        <div class="taskTimeLi">
-
-                            <span>Hora:${task.time}</span>
-                        </div>
-
-                    </div>
-                    <div class="taskDescriptionLi">
-
-                        <span>Descripcion:${task.description}</span>
-                    </div>
-
-
-
-                </li>
+                       <button onclick="removeToList(${task.id})">Eliminar</button>
+                       </div>
+   
+                   </li>
 
    `;
   });
 
-  let buttonDeletes = [...document.querySelectorAll(".delete")];
+  list.innerHTML = tasksToPrint.join("");
+};
 
-  if (buttonDeletes.length > 0) {
-    [...buttonDeletes].forEach((buttonDelete) => {
-      buttonDelete.addEventListener("click", () => {
-        let taskDescriptionDelete = buttonDelete.id;
-        removeToList(taskDescriptionDelete);
-      });
-    });
+function generateUniqueId() {
+  return Date.now();
+}
+
+function createTask(event) {
+  event.preventDefault();
+
+  const form = event.target;
+
+  const formData = new FormData(form);
+
+  const task = {};
+  task.id = generateUniqueId();
+
+  formData.forEach((value, key) => (task[key] = value));
+
+  addToList(task);
+
+  form.reset();
+
+  printList();
+}
+
+function cleanTasksList() {
+  const confirmTasks = confirm(
+    "¿Esta seguro de querer eliminar todas las tareas?"
+  );
+
+  if(!confirmTasks) return
+
+  listTasks = [];
+  printList();
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  if (list) {
+    printList();
+  } else {
+    console.error("Elemento #list no existe ");
   }
-};
-
-const cleanForm = () => {
-  document.querySelector("textarea").value = "";
-  [...document.querySelectorAll("input")].forEach((input) => {
-    input.value = "";
-  });
-};
-
-const cleanTaskList = () => {
-  list.innerHTML = "";
-};
-
-if (buttonAdd) {
-  buttonAdd.addEventListener("click", (event) => {
-    event.preventDefault();
-
-    if (
-      taskName.value.trim() == "" ||
-      taskDate.value.trim() == "" ||
-      taskTime.value.trim() == "" ||
-      taskDescription.value.trim() == ""
-    ) {
-      alert("Complete todos los campos");
-    } else {
-      let task = createTask(
-        taskName.value,
-        taskDate.value,
-        taskTime.value,
-        taskDescription.value
-      );
-      addToList(task);
-      printList();
-    }
-  });
-}
-
-if (buttonReset) {
-  buttonReset.addEventListener("click", cleanForm());
-}
+});
