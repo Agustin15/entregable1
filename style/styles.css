@@ -211,6 +211,7 @@ main #containList .taskDateTimeLi {
 }
 main #containList .taskDescriptionLi {
   padding-left: 1rem;
+  width: 95%;
 }
 main #containList .taskDescriptionLi .description {
   overflow-y: scroll;
@@ -220,9 +221,16 @@ main #containList .taskDescriptionLi .description {
 main #containList .taskDescriptionLi p {
   width: 100%;
 }
+main #containList .footerLi {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 1rem;
+}
 main #containList .containDelete {
-  margin-left: 15rem;
   padding-bottom: 0.5rem;
+  margin-left: 4rem;
 }
 main #containList .containDelete button {
   width: 90px;

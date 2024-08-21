@@ -15,10 +15,30 @@ const removeToList = (idTask) => {
   printList();
 };
 
+function taskDone(idTask, doneTask) {
+  if (!doneTask) {
+    const confirmDoneTask = confirm("¿Desea marcar como realizada esta tarea?");
+    if (!confirmDoneTask) return;
+    listTasks = listTasks.map((task) => {
+      if (task.id == idTask) {
+        task.done = true;
+      }
+      return task;
+    });
+    printList();
+  }
+}
+
 const printList = () => {
   let tasksToPrint = listTasks.map((task) => {
+    let taskStatus;
+    if (task.done) {
+      taskStatus = "Realizada";
+    } else {
+      taskStatus = "Pendiente";
+    }
     return `
-   <li>
+   <li onclick="taskDone(${task.id},${task.done})">
 
         <div class="headerLi">
    
@@ -59,11 +79,18 @@ const printList = () => {
                        </div>
    
    
+                       <div class="footerLi">
+                       <div>
+
+                       <span>Estado:${taskStatus}</span>
+                       </div>
                        <div class="containDelete">
 
                        <button onclick="removeToList(${task.id})">Eliminar</button>
                        </div>
+                       </div>
    
+
                    </li>
 
    `;
@@ -85,7 +112,7 @@ function createTask(event) {
 
   const task = {};
   task.id = generateUniqueId();
-
+  task.done = false;
   formData.forEach((value, key) => (task[key] = value));
 
   addToList(task);
@@ -100,7 +127,7 @@ function cleanTasksList() {
     "¿Esta seguro de querer eliminar todas las tareas?"
   );
 
-  if(!confirmTasks) return
+  if (!confirmTasks) return;
 
   listTasks = [];
   printList();

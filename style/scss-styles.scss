@@ -206,6 +206,7 @@ main {
 
     .taskDescriptionLi {
       padding-left: 1rem;
+      width: 95%;
 
       .description {
         overflow-y: scroll;
@@ -217,9 +218,18 @@ main {
       }
     }
 
+    .footerLi{
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+      justify-content: space-between;
+      padding-left: 1rem;
+
+    }
     .containDelete {
-      margin-left: 15rem;
+
       padding-bottom: 0.5rem;
+      margin-left: 4rem;
 
       button {
         width: 90px;
